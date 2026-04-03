@@ -37,6 +37,31 @@ class LoginPage{
         //cy.get('b').should('be.visible').should('contain.text','Forget Password?')
         cy.url().should('include','/forgot-password')
     }
+    EnterPassword(password)
+    {
+        cy.get('#password').type(password)
+    }
+    validateEyeButtonFunctionality()
+    {
+        cy.get('#password').should('have.attr', 'type', 'password')
+        cy.get('#show-password-toggle').click()
+        cy.get('#password').should('have.attr', 'type', 'text') 
+    }
+    validateRegisterForFree()
+    {
+        cy.get('[href="https://staging-login.nurtureme.ai/viewScreen"]').should('be.visible').click()
+        cy.url().should('include','/viewScreen')
+    }
+    validatePrivacyPolicyLink()
+    {
+        cy.get('[href="https://staging-login.nurtureme.ai/privacy-policy"]').should('be.visible').click()
+        cy.url().should('include','/privacy-policy')
+    }
+    validateTermsAndConditionsLink()
+    {
+        cy.get('[href="https://staging-login.nurtureme.ai/terms-conditions"]').should('be.visible').click()
+        cy.url().should('include','/terms-conditions')
+    }
 
 }
 export default LoginPage;
